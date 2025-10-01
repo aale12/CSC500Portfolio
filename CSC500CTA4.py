@@ -1,3 +1,9 @@
+# Anthony Let
+# CSC500 - Principles of Programming
+# Critical Thinking Assignment 4
+
+# This program simulates a simple shopping cart where the user can input two items with their name, price, and quantity.
+# It then calculates and displays the total cost for each item and the overall total.
 class ItemToPurchase:
     # Constructor to initialize item details and set attributes
     def __init__(self, item_name="none", item_price=0.0, item_quantity=0):
