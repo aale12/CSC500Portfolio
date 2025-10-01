@@ -4,7 +4,7 @@
 ### 📌 Overview  
 This program provides a simple shopping cart simulation that allows the user to enter two items, each with a name, price, and quantity. It calculates the total cost for each item and the combined total for both items.  
 
-The solution was developed as part of **Critical Thinking Assignment 4** for **CSC500 – Principles of Programming**.  
+The solution was developed as part of **Critical Thinking Assignment 4** for **CSC500 – Principles of Programming** at Colorado State University - Global.  
 
 ---
 
@@ -23,7 +23,7 @@ The solution was developed as part of **Critical Thinking Assignment 4** for **C
 
 ---
 
-### 📋 Example Run  
+### 📋 Example Usage
 
 ```
 Enter the name of item 1:
@@ -45,33 +45,16 @@ Chocolate Chips 1 @ $3.00 = $3.00
 Bottled Water 10 @ $1.00 = $10.00
 
 Total: $13.00
-```
-
----
-
-### 📂 File Structure  
-```
-.
-├── item_to_purchase.py   # Main program source code
-└── README.md             # Assignment documentation
-```
 
 ---
 
 ### ▶️ How to Run  
 1. Ensure you have **Python 3.x** installed  
-2. Save the program as `item_to_purchase.py`  
+2. Save the program as `CSC500CTA4.py`  
 3. Open a terminal or command prompt in the program’s directory  
 4. Run the program:  
    ```
-   python item_to_purchase.py
+   python CSC500CTA4.py
    ```
 
----
 
-### 📚 Learning Objectives  
-This assignment demonstrates:  
-- Defining and using **classes and objects** in Python  
-- Applying **constructors and methods**  
-- Handling **user input** for multiple objects  
-- Performing **basic arithmetic operations** and formatted printing  
