@@ -52,9 +52,6 @@ Total: $13.00
 1. Ensure you have **Python 3.x** installed  
 2. Save the program as `CSC500CTA4.py`  
 3. Open a terminal or command prompt in the program’s directory  
-4. Run the program:  
-   ```
-   python CSC500CTA4.py
-   ```
+4. Run the program
 
 
