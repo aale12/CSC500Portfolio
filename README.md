@@ -2,12 +2,12 @@
 ## Shopping Cart App
 
 ### 📌 Overview
-This repository contains a small interactive shopping cart application implemented for **CSC500 – Principles of Programming**. The program defines two main types:
+This repository contains a small interactive shopping cart application implemented for **CSC500 – Principles of Programming - Portfolio**. The program defines two main types:
 
 - `ItemToPurchase` — represents a purchasable item with name, price, quantity, and description.
 - `ShoppingCart` — represents a customer's cart and provides methods to add, remove, modify items, and print summaries.
 
-The program runs as a console application and exposes a simple single-letter menu to manipulate the shopping cart.
+The program runs as a console application and produces a simple single-letter menu to manipulate the shopping cart.
 
 ---
 
@@ -99,10 +99,7 @@ python CSC500Portfolio.py
 
 ---
 
-### Notes & next steps
-- `modify_item()` uses parameter defaults to indicate which fields to skip; to change only the description, pass an `ItemToPurchase` with the target name and a non-default `item_description`.
-- If you'd like, the menu can be extended to save/load carts, show item indices when removing/modifying, or accept command-line options for non-interactive runs.
 
-Author: Anthony Let
+Author: Anthony Le
 
 
