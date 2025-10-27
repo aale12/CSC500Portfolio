@@ -6,9 +6,10 @@
 # It then calculates and displays the total cost for each item and the overall total.
 
 class ItemToPurchase:
+    """Class to represent an item to be purchased in a shopping cart."""
     # Constructor to initialize item details and set attributes
-
     def __init__(self, item_name="none", item_price=0.0, item_quantity=0, item_description="none"):
+        """Initialize the item with name, price, quantity, and description."""
         self.item_name = item_name
         self.item_price = item_price
         self.item_quantity = item_quantity
@@ -16,6 +17,7 @@ class ItemToPurchase:
 
     # Method to print item cost
     def print_item_cost(self):
+        """Print the cost of the item based on its price and quantity."""
         total_cost = self.item_price * self.item_quantity
         print(
             f"{self.item_name} {self.item_quantity} @ ${self.item_price:.2f} = ${total_cost:.2f}"
@@ -23,12 +25,15 @@ class ItemToPurchase:
 
     # Method to calculate and return the total cost of the item
     def get_total_cost(self):
+        """Calculate and return the total cost of the item."""
         return self.item_price * self.item_quantity
 
 # Shopping Cart class
 class ShoppingCart:
+    """Class to represent a shopping cart."""
     # Parameterized constructor which takes in customer name and date
     def __init__(self, customer_name="none", current_date="January 1, 2020"):
+        """Initialize the shopping cart with customer name and current date."""
         self.customer_name = customer_name
         self.current_date = current_date
         # list of ItemToPurchase objects
@@ -36,10 +41,12 @@ class ShoppingCart:
 
     # Add Item Method
     def add_item(self, item):
+        """Add an item to the shopping cart."""
         self.cart_items.append(item)
 
     # Remove Item Method
     def remove_item(self, item_name):
+        """Remove an item from the shopping cart by name."""
         for item in self.cart_items:
             if item.item_name == item_name:
                 self.cart_items.remove(item)
@@ -48,10 +55,10 @@ class ShoppingCart:
 
     # Modify Item Method
     def modify_item(self, item):
+        """Modify an existing item in the shopping cart."""
         for cart_item in self.cart_items:
             if cart_item.item_name == item.item_name:
                 # Only modify attributes that are not default values
-                # Defaults: description="none", price=0.0, quantity=0
                 if hasattr(item, 'item_description') and item.item_description != "none":
                     cart_item.item_description = item.item_description
                 if hasattr(item, 'item_price') and item.item_price != 0.0:
@@ -63,16 +70,19 @@ class ShoppingCart:
 
     # Get Number Of Items Method
     def get_num_items_in_cart(self):
+        """Get the total number of items in the shopping cart."""
         total_quantity = sum(item.item_quantity for item in self.cart_items)
         return total_quantity
     
     # Get Cost Of Cart Method
     def get_cost_of_cart(self):
+        """Calculate and return the total cost of all items in the shopping cart."""
         total_cost = sum(item.get_total_cost() for item in self.cart_items)
         return total_cost
     
     # Print Total Method
     def print_total(self):
+        """Print the total cost of the shopping cart."""
         print(f"{self.customer_name}'s Shopping Cart - {self.current_date}")
         print(f"Number of Items: {self.get_num_items_in_cart()}\n")
         if not self.cart_items:
@@ -85,6 +95,7 @@ class ShoppingCart:
 
     # Print Descriptions Method
     def print_descriptions(self):
+        """Print the descriptions of all items in the shopping cart."""
         print(f"{self.customer_name}'s Shopping Cart - {self.current_date}\n")
         print("Item Descriptions")
         for item in self.cart_items:
@@ -93,8 +104,10 @@ class ShoppingCart:
 
 
 def print_menu(cart: ShoppingCart):
-
+    """Display the menu and process user choices."""
+    # Set of valid menu choices
     valid_choices = {"a", "r", "c", "i", "o", "q"}
+    # Loop until user chooses to quit
     while True:
         print("\nMENU")
         print("a - Add item to cart")
@@ -116,7 +129,7 @@ def print_menu(cart: ShoppingCart):
         if choice == "a":
             # Ask for item details
             name = input("Enter the item name: ").strip()
-            description = input("Enter the item description: ").strip()
+            description = input("Enter the item description: ").strip().lower()
             # Ask for item price and quantity with validation
             while True:
                 try:
@@ -143,12 +156,12 @@ def print_menu(cart: ShoppingCart):
 
         elif choice == "r":
             # Ask for name of item to remove
-            name = input("Enter the name of the item to remove: ").strip()
+            name = input("Enter the name of the item to remove: ").strip().lower()
             cart.remove_item(name)
 
         elif choice == "c":
             # Ask for name of item to modify
-            name = input("Enter the name of the item to modify: ").strip()
+            name = input("Enter the name of the item to modify: ").strip().lower()
             # Ask for new values; empty input means do not change
             desc = input("Enter new description (leave blank to keep current): ").strip()
             price_input = input("Enter new price (leave blank to keep current): ").strip()
@@ -176,7 +189,7 @@ def print_menu(cart: ShoppingCart):
 
 
 if __name__ == "__main__":
-    # Create a shopping cart for the customer
+    # Create a shopping cart for the customer with defaults
     customer_name = input("Enter customer name: ").strip()
     if not customer_name:
         customer_name = "none"
