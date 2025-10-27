@@ -1,57 +1,108 @@
-# CSC500 – Critical Thinking Assignment 4  
-## Item Purchase Calculator  
+# CSC500 – Portfolio
+## Shopping Cart App
 
-### 📌 Overview  
-This program provides a simple shopping cart simulation that allows the user to enter two items, each with a name, price, and quantity. It calculates the total cost for each item and the combined total for both items.  
+### 📌 Overview
+This repository contains a small interactive shopping cart application implemented for **CSC500 – Principles of Programming**. The program defines two main types:
 
-The solution was developed as part of **Critical Thinking Assignment 4** for **CSC500 – Principles of Programming** at Colorado State University - Global.  
+- `ItemToPurchase` — represents a purchasable item with name, price, quantity, and description.
+- `ShoppingCart` — represents a customer's cart and provides methods to add, remove, modify items, and print summaries.
 
----
-
-### 🖥️ Program Features  
-- Defines an `ItemToPurchase` class with the following:  
-  - **Attributes**: `item_name` (string), `item_price` (float), `item_quantity` (int)  
-  - **Constructor**: Initializes default values (`"none"`, `0.0`, `0`)  
-  - **Methods**:  
-    - `print_item_cost()` → Prints formatted cost for an item  
-    - `get_total_cost()` → Returns total cost (price × quantity)  
-
-- Prompts the user for input for **two items**  
-- Creates two `ItemToPurchase` objects  
-- Prints the cost of each item  
-- Calculates and displays the **total cost**  
+The program runs as a console application and exposes a simple single-letter menu to manipulate the shopping cart.
 
 ---
 
-### 📋 Example Usage
+### 🧾 Data model & behavior
+
+ItemToPurchase
+- Attributes:
+  - `item_name` (string)
+  - `item_price` (float)
+  - `item_quantity` (int)
+  - `item_description` (string)
+  - Defaults: name="none", price=0.0, quantity=0, description="none".
+- Methods:
+  - `print_item_cost()` — prints the formatted cost for the item.
+  - `get_total_cost()` — returns price × quantity.
+
+ShoppingCart
+- Constructor accepts `customer_name` and `current_date` (defaults: "none" and "January 1, 2020").
+- Attributes:
+  - `customer_name` (string)
+  - `current_date` (string)
+  - `cart_items` (list of `ItemToPurchase`)
+- Key methods:
+  - `add_item(item: ItemToPurchase)` — add item to cart.
+  - `remove_item(item_name: str)` — remove first matching item by name; prints "Item not found in cart. Nothing removed." if not found.
+  - `modify_item(item: ItemToPurchase)` — modify an existing item by name; only non-default fields from the parameter are applied; prints "Item not found in cart. Nothing modified." if not found.
+  - `get_num_items_in_cart()` — returns total quantity of items in the cart.
+  - `get_cost_of_cart()` — returns total cost of all items.
+  - `print_total()` — prints cart header, number of items, each item's cost, and total; prints "SHOPPING CART IS EMPTY" when cart has no items.
+  - `print_descriptions()` — prints each item's name and description.
+
+---
+
+### ▶️ Interactive menu
+When you run the script it asks for a customer name and date, then shows a menu. Each option is a single character:
+
+- `a` — Add item to cart (prompts for name, description, price, quantity)
+- `r` — Remove item from cart (prompts for item name)
+- `c` — Change (modify) an item — prompts for name and optional new description, price, quantity (blank inputs mean "no change")
+- `i` — Output item descriptions
+- `o` — Output shopping cart (prints item costs and total)
+- `q` — Quit the program
+
+The menu re-prompts on invalid input and continues until you enter `q`.
+
+---
+
+### 📋 Example session
 
 ```
-Enter the name of item 1:
-Chocolate Chips
-Enter the price of item 1:
-3
-Enter the quantity of item 1:
-1
+Enter customer name: Alice
+Enter today's date (e.g. January 1, 2020): October 26, 2025
 
-Enter the name of item 2:
-Bottled Water
-Enter the price of item 2:
-1
-Enter the quantity of item 2:
-10
+MENU
+ a - Add item to cart
+ r - Remove item from cart
+ c - Change item quantity/description/price
+ i - Output item descriptions
+ o - Output shopping cart
+ q - Quit
 
-TOTAL COST
-Chocolate Chips 1 @ $3.00 = $3.00
-Bottled Water 10 @ $1.00 = $10.00
+Choose an option: a
+Enter the item name: The Hobbit
+Enter the item description: Fantasy novel
+Enter the item price: 10.99
+Enter the item quantity: 1
+Added The Hobbit to cart.
 
-Total: $13.00
+Choose an option: o
+Alice's Shopping Cart - October 26, 2025
+Number of Items: 1
+
+The Hobbit 1 @ $10.99 = $10.99
+
+Total: $10.99
+
+Choose an option: q
+Exiting menu.
+```
 
 ---
 
-### ▶️ How to Run  
-1. Ensure you have **Python 3.x** installed  
-2. Save the program as `CSC500CTA4.py`  
-3. Open a terminal or command prompt in the program’s directory  
-4. Run the program
+### ▶️ How to run
+Make sure you have Python 3 installed, then from the project folder run:
+
+```powershell
+python CSC500Portfolio.py
+```
+
+---
+
+### Notes & next steps
+- `modify_item()` uses parameter defaults to indicate which fields to skip; to change only the description, pass an `ItemToPurchase` with the target name and a non-default `item_description`.
+- If you'd like, the menu can be extended to save/load carts, show item indices when removing/modifying, or accept command-line options for non-interactive runs.
+
+Author: Anthony Let
 
 
