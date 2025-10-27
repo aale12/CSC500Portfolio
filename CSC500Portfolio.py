@@ -1,4 +1,4 @@
-# Anthony Let
+# Anthony Le
 # CSC500 - Principles of Programming
 # Critical Thinking Assignment 4,6
 
@@ -48,8 +48,9 @@ class ShoppingCart:
     def remove_item(self, item_name):
         """Remove an item from the shopping cart by name."""
         for item in self.cart_items:
-            if item.item_name == item_name:
+            if item.item_name.lower() == item_name.lower():
                 self.cart_items.remove(item)
+                print(f"Removed {item_name} from cart.")
                 return
         print("Item not found in cart. Nothing removed.")
 
@@ -57,7 +58,7 @@ class ShoppingCart:
     def modify_item(self, item):
         """Modify an existing item in the shopping cart."""
         for cart_item in self.cart_items:
-            if cart_item.item_name == item.item_name:
+            if cart_item.item_name.lower() == item.item_name.lower():
                 # Only modify attributes that are not default values
                 if hasattr(item, 'item_description') and item.item_description != "none":
                     cart_item.item_description = item.item_description
@@ -129,7 +130,7 @@ def print_menu(cart: ShoppingCart):
         if choice == "a":
             # Ask for item details
             name = input("Enter the item name: ").strip()
-            description = input("Enter the item description: ").strip().lower()
+            description = input("Enter the item description: ").strip()
             # Ask for item price and quantity with validation
             while True:
                 try:
@@ -156,12 +157,12 @@ def print_menu(cart: ShoppingCart):
 
         elif choice == "r":
             # Ask for name of item to remove
-            name = input("Enter the name of the item to remove: ").strip().lower()
+            name = input("Enter the name of the item to remove: ").strip()
             cart.remove_item(name)
 
         elif choice == "c":
             # Ask for name of item to modify
-            name = input("Enter the name of the item to modify: ").strip().lower()
+            name = input("Enter the name of the item to modify: ").strip()
             # Ask for new values; empty input means do not change
             desc = input("Enter new description (leave blank to keep current): ").strip()
             price_input = input("Enter new price (leave blank to keep current): ").strip()
