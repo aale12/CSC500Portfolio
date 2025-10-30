@@ -66,6 +66,7 @@ class ShoppingCart:
                     cart_item.item_price = item.item_price
                 if hasattr(item, 'item_quantity') and item.item_quantity != 0:
                     cart_item.item_quantity = item.item_quantity
+                print(f"Modified {item.item_name} in cart.")
                 return
         print("Item not found in cart. Nothing modified.")
 
@@ -84,8 +85,9 @@ class ShoppingCart:
     # Print Total Method
     def print_total(self):
         """Print the total cost of the shopping cart."""
+        print("OUTPUT SHOPPING CART")
         print(f"{self.customer_name}'s Shopping Cart - {self.current_date}")
-        print(f"Number of Items: {self.get_num_items_in_cart()}\n")
+        print(f"Number of Items: {self.get_num_items_in_cart()}")
         if not self.cart_items:
             print("SHOPPING CART IS EMPTY")
         else:
@@ -97,6 +99,7 @@ class ShoppingCart:
     # Print Descriptions Method
     def print_descriptions(self):
         """Print the descriptions of all items in the shopping cart."""
+        print("OUTPUT ITEM DESCRIPTIONS")
         print(f"{self.customer_name}'s Shopping Cart - {self.current_date}\n")
         print("Item Descriptions")
         for item in self.cart_items:
@@ -129,6 +132,7 @@ def print_menu(cart: ShoppingCart):
 
         if choice == "a":
             # Ask for item details
+            print("ADD ITEM TO CART")
             name = input("Enter the item name: ").strip()
             description = input("Enter the item description: ").strip()
             # Ask for item price and quantity with validation
@@ -157,11 +161,13 @@ def print_menu(cart: ShoppingCart):
 
         elif choice == "r":
             # Ask for name of item to remove
+            print("REMOVE ITEM FROM CART")
             name = input("Enter the name of the item to remove: ").strip()
             cart.remove_item(name)
 
         elif choice == "c":
             # Ask for name of item to modify
+            print("CHANGE ITEM DESCRIPTION/PRICE/QUANTITY")
             name = input("Enter the name of the item to modify: ").strip()
             # Ask for new values; empty input means do not change
             desc = input("Enter new description (leave blank to keep current): ").strip()
